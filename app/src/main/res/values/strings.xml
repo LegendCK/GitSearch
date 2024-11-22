@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GitSearch</string>
+    <string name="title_activity_repository">RepositoryActivity</string>
 </resources>

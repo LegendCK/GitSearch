@@ -1,6 +1,7 @@
 package com.example.gitsearch.data
 
 import com.google.gson.annotations.SerializedName
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -12,6 +13,6 @@ data class Repository(
 )
 
 interface GitHubApiService {
-    @GET("users/{username}/repos") // Use {username} to dynamically insert the username
-    suspend fun getUserRepos(@Path("username") username: String): List<Repository>
+    @GET("users/{username}/repos")
+    suspend fun getUserRepos(@Path("username") username: String): Response<List<Repository>>
 }

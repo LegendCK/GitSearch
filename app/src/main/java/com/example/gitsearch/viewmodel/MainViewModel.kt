@@ -36,4 +36,5 @@ class MainViewModel @Inject constructor(
         data class Success(val repos: List<Repository>) : UiState()
         data class Error(val message: String) : UiState()
     }
+
 }
