@@ -14,10 +14,10 @@ GitSearch is an Android application that allows users to search and explore GitH
 ![GitSearch Screenshot 1](./assets/img.png)
 *Sample screenshot of the main screen.*
 
-![GitSearch Screenshot 1](./assets/img_1.png)
+![GitSearch Screenshot 2](./assets/img_1.png)
 *Sample screenshot of the repository list.*
 
-![GitSearch Screenshot 2](./assets/img_2.png)
+![GitSearch Screenshot 3](./assets/img_2.png)
 *Sample screenshot of the error message.*
 
 ## Tech Stack
@@ -64,4 +64,27 @@ This app uses the GitHub API to fetch repositories. You do not need any addition
 2. **Loading State**: Displays a loading spinner while data is being fetched.
 3. **Success State**: Displays the list of repositories if the data is fetched successfully.
 4. **Error State**: Displays an error message if no repositories are found or if the username is invalid.
+
+## Architecture Overview
+
+This app follows the **MVVM (Model-View-ViewModel)** architecture pattern:
+
+- **Model**: The data layer that interacts with the GitHub API to fetch user repository data. The `GitHubRepository` class handles network calls and serves as the data provider for the ViewModel.
+- **View**: The UI layer built using **Jetpack Compose**. It observes the data from the ViewModel and updates the UI accordingly. The view is reactive and responds to changes in the data.
+- **ViewModel**: The `MainViewModel` acts as the intermediary between the View and Model. It manages the state of the UI, processes data, and interacts with the `GitHubRepository` to fetch repository data. The ViewModel exposes this data in a lifecycle-conscious manner (e.g., using LiveData or StateFlow).
+
+
+## Libraries Used
+
+- **Jetpack Compose**: UI toolkit for modern Android apps.
+- **Hilt**: Dependency Injection for managing app dependencies.
+- **Retrofit**: HTTP client for making network requests to the GitHub API.
+- **Coroutines**: For handling asynchronous operations.
+- **Material3**: For UI components and design system.
+
+## Assumptions and Decisions
+
+- No API key is required for accessing public data from GitHub.
+- The app uses a simple error handling approach to display a message when no repositories are found or the username is invalid.
+- The repository data (name, description, language, stars) is fetched and displayed, while additional information such as forks, issues, and commits are not included in this version of the app.
 
