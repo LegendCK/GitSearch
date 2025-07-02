@@ -82,9 +82,4 @@ This app follows the **MVVM (Model-View-ViewModel)** architecture pattern:
 - **Coroutines**: For handling asynchronous operations.
 - **Material3**: For UI components and design system.
 
-## Assumptions and Decisions
-
-- No API key is required for accessing public data from GitHub.
-- The app uses a simple error handling approach to display a message when no repositories are found or the username is invalid.
-- The repository data (name, description, language, stars) is fetched and displayed, while additional information such as forks, issues, and commits are not included in this version of the app.
 
