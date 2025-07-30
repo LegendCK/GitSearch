@@ -5,7 +5,7 @@ We’re excited to collaborate with contributors as part of **GirlScript Summer 
 
 ---
 
-## 📌 Table of Contents
+## Table of Contents
 
 - [Getting Started](#getting-started)
 - [How to Contribute](#how-to-contribute)
@@ -17,7 +17,7 @@ We’re excited to collaborate with contributors as part of **GirlScript Summer 
 
 ---
 
-## 🛠 Getting Started
+## Getting Started
 
 1. Fork the repository
 2. Clone your forked repo
@@ -26,7 +26,7 @@ We’re excited to collaborate with contributors as part of **GirlScript Summer 
 
 ---
 
-## 🌟 How to Contribute
+## How to Contribute
 
 We welcome all kinds of contributions, including:
 
@@ -38,7 +38,7 @@ We welcome all kinds of contributions, including:
 
 ---
 
-## 🐞 Creating Issues
+## Creating Issues
 
 Before creating an issue:
 
@@ -47,7 +47,7 @@ Before creating an issue:
 
 ---
 
-## ✋ Working on Issues
+## Working on Issues
 
 1. Choose an issue you'd like to work on
 2. Comment on the issue asking to be assigned
@@ -60,7 +60,7 @@ Before creating an issue:
 
 ---
 
-## ✨ Code Guidelines
+## Code Guidelines
 
 - Use **Kotlin best practices**
 - Follow **MVVM architecture**
@@ -70,7 +70,7 @@ Before creating an issue:
 
 ---
 
-## ✅ Pull Request Guidelines
+## Pull Request Guidelines
 
 1. Push your branch to your fork:
    ```bash
@@ -86,7 +86,7 @@ Before creating an issue:
 
 ---
 
-## 💬 Community & Communication
+## Community & Communication
 
 - Use issue comments for questions and suggestions
 - Be respectful, collaborative, and helpful — we're here to learn and grow together
