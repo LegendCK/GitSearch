@@ -90,6 +90,9 @@ implementation("androidx.compose.material:material-icons-extended")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
 
     implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation("androidx.navigation:navigation-compose:2.7.5") // or latest
+    implementation("androidx.compose.animation:animation:1.6.0")   // for Animatable
+
 
 
 

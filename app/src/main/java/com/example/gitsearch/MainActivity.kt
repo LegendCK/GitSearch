@@ -6,8 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -64,7 +62,7 @@ fun MainScreen() {
             onValueChange = { username = it },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp),
+                .padding(bottom = 16.dp),
             label = { Text("Enter GitHub Username") },
             textStyle = TextStyle(fontSize = 16.sp),
             singleLine = true,
@@ -72,19 +70,7 @@ fun MainScreen() {
                 focusedBorderColor = Color.Black,
                 unfocusedBorderColor = Color.Black,
                 focusedLabelColor = Color.Black
-            ),
-            trailingIcon = {
-                if (username.text.isNotEmpty()) {
-                    IconButton(onClick = {
-                        username = TextFieldValue("")
-                    }) {
-                        Icon(
-                            imageVector = Icons.Filled.Close,
-                            contentDescription = "Clear text"
-                        )
-                    }
-                }
-            }
+            )
         )
 
         val context = LocalContext.current
@@ -96,7 +82,8 @@ fun MainScreen() {
                 context.startActivity(intent)
             },
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(top = 16.dp),
             shape = MaterialTheme.shapes.medium,
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Black
@@ -104,8 +91,9 @@ fun MainScreen() {
         ) {
             Text(
                 text = "Search",
-                style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White) // Change text color to white for contrast
             )
         }
+
     }
 }
