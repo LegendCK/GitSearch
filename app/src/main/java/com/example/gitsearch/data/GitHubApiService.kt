@@ -9,7 +9,8 @@ data class Repository(
     @SerializedName("name") val name: String,
     @SerializedName("stargazers_count") val stars: Int,
     @SerializedName("language") val language: String?,
-    @SerializedName("description") val description: String?
+    @SerializedName("description") val description: String?,
+    @SerializedName("html_url")val url: String
 )
 
 interface GitHubApiService {
