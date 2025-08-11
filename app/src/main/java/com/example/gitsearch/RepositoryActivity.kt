@@ -1,6 +1,8 @@
  package com.example.gitsearch
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -16,13 +18,16 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.OpenInNew
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -30,6 +35,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -37,6 +43,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import com.example.gitsearch.data.Repository
 import com.example.gitsearch.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -237,6 +244,12 @@ class RepositoryActivity : ComponentActivity() {
          label = "elevation"
      )
 
+
+     val context = LocalContext.current
+     val intent = remember {
+         Intent(Intent.ACTION_VIEW, repo.url.toUri())
+     }
+
      Card(
          modifier = Modifier
              .fillMaxWidth()
@@ -250,16 +263,58 @@ class RepositoryActivity : ComponentActivity() {
          colors = CardDefaults.cardColors(containerColor = Color.White)
      ) {
          Column(modifier = Modifier.padding(16.dp)) {
-             // Repository name
-             Text(
-                 text = repo.name,
-                 style = MaterialTheme.typography.titleLarge.copy(
-                     fontWeight = FontWeight.Bold,
-                     fontSize = 20.sp,
-                     color = Color(0xFF333333)
-                 ),
-                 modifier = Modifier.padding(bottom = 8.dp)
-             )
+             //AlertDialog
+
+             var showDialog by remember { mutableStateOf(false) }
+             if (showDialog) {
+                 AlertDialog(
+                     onDismissRequest = { showDialog = false },
+                     title = { Text("Open Repository") },
+                     text = { Text("Do you want to open ${repo.name}?") },
+                     confirmButton = {
+                         TextButton(
+                             onClick = {
+                                 showDialog = false
+                                 context.startActivity(intent)
+                             }
+                         ) {
+                             Text("Open")
+                         }
+                     },
+                     dismissButton = {
+                         TextButton(onClick = { showDialog = false }) {
+                             Text("Cancel")
+                         }
+                     }
+                 )
+             }
+             // Repository name and open icon
+             Row(
+                 verticalAlignment = Alignment.CenterVertically,
+                 modifier = Modifier.fillMaxWidth()
+             ) {
+                 Text(
+                     text = repo.name,
+                     style = MaterialTheme.typography.titleLarge.copy(
+                         fontWeight = FontWeight.Bold,
+                         fontSize = 20.sp,
+                         color = Color(0xFF333333)
+                     ),
+                     modifier = Modifier.weight(1f)
+                 )
+
+                 Icon(
+                     imageVector = Icons.Default.OpenInNew,
+                     contentDescription = "Open Repository",
+                     tint = Color.Gray,
+                     modifier = Modifier
+                         .size(20.dp)
+                         .clickable {
+                             showDialog=true
+
+                         }
+                 )
+             }
 
              // Language and Stars Row
              Row(
